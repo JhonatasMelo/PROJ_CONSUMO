@@ -12,13 +12,13 @@ export class ConsumoController {
         return null;
     }
 
-    // Funcao para ler os dados de consumo
+    // ler os dados de consumo
     @Get()
     readAllConsumos(): Promise<any> {
         return this.consumoService.readConsumo();
     }
 
-    // Funcao para encontrar o cliente especifico pelo ID
+    //  Encontrar o cliente pelo ID
     @Get(':customerCode')
     getCustomerById(@Param('customerCode') customerCode: number): Promise<any> {
         return this.consumoService.getCustomerById(customerCode);
@@ -26,7 +26,7 @@ export class ConsumoController {
 
     
 
-    // Filtrar consumo por data inicial e final de um determinado usuario
+    // Filtro de consumo por usuario
     @Get('/data/:customerCode/:initialDate/:finalDate')
     filterConsumptionDate(@Param('customerCode') customerCode: number, @Param('initialDate') initialDate: String, @Param('finalDate') finalDate: String): Promise<any> {
         return this.consumoService.filterConsumptionDate(customerCode, initialDate, finalDate);
