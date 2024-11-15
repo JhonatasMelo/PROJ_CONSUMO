@@ -8,7 +8,7 @@ import { Model } from "mongoose";
 export class ConsumoService {
     constructor(@InjectModel('Consumo') private readonly consumoModel: Model<Consumo>) { }
 
-    // Registro de Consumo de Água
+    //  Consumo Água
     async registerConsumption(consumo: Consumo) {
         const consumoModel = new this.consumoModel({
             nameUser: consumo.nameUser,
@@ -20,7 +20,7 @@ export class ConsumoService {
         return result.id as string;
     }
 
-    // Encontrar cliente por ID
+    //  ID Cliente
     async getCustomerById(customerCode: number) {
         const infosConsumo = await this.consumoModel.find({ customerCode: customerCode }).exec();
         if (!infosConsumo) {
@@ -30,7 +30,7 @@ export class ConsumoService {
         return infosConsumo;
     }
 
-    // Consulta de Histórico de Consumo
+    //  Histórico Consumo
     async filterConsumptionDate(customerCode: number, initialDate: String, finalDate: String) {
 
         // Verificar se as datas estão em formato válido
@@ -56,7 +56,7 @@ export class ConsumoService {
         }
     }
 
-    // Ler consumos cadastrados
+    // Consumos cadastrados
     async readConsumo() {
         const consumo = await this.consumoModel.find().exec();
         return consumo.map(consumo => ({
